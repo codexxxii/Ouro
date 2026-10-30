@@ -1,5 +1,6 @@
 import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
+import { createInsertSchema } from "drizzle-zod";
 
 // Tables
 export const users = pgTable("users", {
@@ -43,3 +44,7 @@ export const userRelations = relations(users, ({ one }) => ({
 export const heightRelations = relations(heights, ({ one }) => ({
   user: one(users, { fields: [heights.user_id], references: [users.clerk_id] }),
 }));
+
+// Schemas
+export const createUserSchema = createInsertSchema(users);
+export const createHeightSchema = createInsertSchema(heights);

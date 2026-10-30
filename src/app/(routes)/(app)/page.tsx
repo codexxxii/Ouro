@@ -11,10 +11,10 @@ export default function HomePage() {
         <nav className="flex items-center gap-5">
           <Suspense>
             <Show when={"signed-out"}>
-              <SignInButton>
+              <SignInButton mode="modal" forceRedirectUrl={"/auth-callback"}>
                 <button>Sign In</button>
               </SignInButton>
-              <SignUpButton>
+              <SignUpButton mode="modal" forceRedirectUrl={"/auth-callback"}>
                 <button className="border-black bg-black text-white flex items-center gap-2">
                   Get Started <ArrowRight size={12} />
                 </button>
@@ -25,7 +25,9 @@ export default function HomePage() {
                 <button>Dashboard</button>
               </Link>
               <SignOutButton>
-                <button>Sign Out</button>
+                <button className="border-red-700 bg-red-100 text-red-700">
+                  Sign Out
+                </button>
               </SignOutButton>
             </Show>
           </Suspense>
